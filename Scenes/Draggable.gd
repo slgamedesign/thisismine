@@ -11,11 +11,9 @@ var sourceArray = Docs.new().docs
 # Añade el objeto al grupo "Draggable" para organizar
 func _ready() -> void:
 	draggable = false
-	
-	# NOTA	TIENE EN PARENTESIS A QUE CORRESPONDE PARA DEBUGAR
+
 	# TODO HACER UN SISTEMA PARA ALMACENAR EN CADA DOCUMENTO SI ES PARA APROBAR O NO
-	# DEBUG
-	print(sourceArray[0])
+
 	# Añade el texto al Pop-up
 	textArea.append_text(sourceArray[randi_range(0, 5)] + "\n")
 	textArea.append_text(sourceArray[randi_range(6, 11)])

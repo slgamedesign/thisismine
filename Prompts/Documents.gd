@@ -1,3 +1,5 @@
+	# NOTA TIENE EN PARENTESIS A QUE CORRESPONDE PARA DEBUGAR
+
 @export var docs = [
 	"(all)The creator of this work has requested [] compliance, which requires proper attribution for any usage.",
 	"(SA)This work is protected under a license that mandates all derivative works to be shared alike. Any adaptation must adhere to this condition.",
