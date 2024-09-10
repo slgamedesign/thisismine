@@ -16,7 +16,7 @@ func random_color_face():
 	return Color(randf_range(33.0/255.0, 250.0/255.0), randf_range(25.0/255.0, 226.0/255.0), randf_range(21.0/255.0, 212.0/255.0))
 
 # Se llama al ser instanciado el personaje, aleatoriza los 5 pelos, 5 caras, y 3 ropas. Además de los colores
-func _ready():
+func _ready() -> void:
 	clothes.frame = randi_range(0, 2)
 	face.frame = randi_range(0, 4)
 	hair.frame = randi_range(0, 4)
@@ -31,7 +31,7 @@ func _ready():
 
 
 # PARA DEBUG (ALEATORIZA TODO NUEVAMENTE)
-func _process(delta):
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		_ready()
 	pass

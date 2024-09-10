@@ -876,7 +876,7 @@ frame = 94
 frame_progress = 0.709218
 
 [node name="Object" parent="." instance=ExtResource("3_faqed")]
-position = Vector2(502, 430)
+position = Vector2(452, 454)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
