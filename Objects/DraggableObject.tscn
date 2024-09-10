@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://uq4ls3bw7l5a" path="res://Prompts/joystix monospace.otf" id="5_mrdm3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqmor"]
-size = Vector2(100, 100)
+size = Vector2(96, 96)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7idsd"]
 texture = ExtResource("4_bnkdx")
