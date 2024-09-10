@@ -8,7 +8,7 @@ func _ready() -> void:
 func _input(evt) -> void:
 	# Setea la posición del objeto Cursor a la posición del Mouse
 	global_position = get_global_mouse_position()
-	self.move_to_front()
+	self.z_index = 4091
 	
 	if evt is InputEventMouseButton: 
 		# Selecciona sprite del cursor si se hace click o no

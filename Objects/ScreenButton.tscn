@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://v3ekwsxt6ja2"]
+
+[ext_resource type="Script" path="res://Objects/screen_button.gd" id="1_6tdwi"]
+
+[node name="ButtonZERO" type="AnimatedSprite2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+script = ExtResource("1_6tdwi")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse"]

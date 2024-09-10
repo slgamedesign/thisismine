@@ -37,7 +37,7 @@ func show_document() -> void:
 
 
 func move_document():
-	self.move_to_front() # Mueve el objeto para que se renderize arriba de cualquier otro
+	self.z_index = 4090 # Mueve el objeto para que se renderize arriba de cualquier otro
 	global.isdragging = true # Setea la variable global que algo está siendo arrastrado
 	global_position = get_global_mouse_position() # Mueve el objeto arrastrado a la posición del mouse
 	# Limita el área de movimiento del objeto
@@ -46,12 +46,12 @@ func move_document():
 
 
 func _input(_evt: InputEvent) -> void:
+	if Input.is_action_just_pressed("Click") and draggable:
+		offset = -Vector2(global_position - get_global_mouse_position())
 	
 	if Input.is_action_pressed("Click") and draggable: # Si el click está presionado
 		move_document()
 		
-	if Input.is_action_just_pressed("Click") and draggable:
-		offset = -Vector2(global_position - get_global_mouse_position())
 		
 	elif Input.is_action_just_released("Click") and global.isdragging: # Si se está arrastrando algo y se suelta el mouse
 		global.isdragging = false # Se informa que ya no se arrastra nada
