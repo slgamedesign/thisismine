@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cyo0o11vv6oyn"]
+[gd_scene load_steps=10 format=4 uid="uid://cyo0o11vv6oyn"]
 
 [ext_resource type="Script" path="res://Scenes/Draggable.gd" id="1_acw5m"]
 [ext_resource type="Texture2D" uid="uid://tskpbuko7ef6" path="res://Assets/PlaceholderDoc1.png" id="2_k1dux"]
@@ -28,7 +28,7 @@ sources/0 = SubResource("TileSetAtlasSource_7idsd")
 
 [sub_resource type="Theme" id="Theme_fuk6q"]
 default_font = ExtResource("5_mrdm3")
-default_font_size = 18
+default_font_size = 13
 
 [node name="Object" type="Node2D" node_paths=PackedStringArray("readingWindow", "textArea") groups=["Draggable"]]
 script = ExtResource("1_acw5m")
@@ -45,24 +45,23 @@ script = ExtResource("3_ypikg")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_yqmor")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMapLayer" parent="."]
 visible = false
+scale = Vector2(1.5, 1.5)
+tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAAAD///7/AAABAAAAAAAAAP7/AAACAAAAAAAAAP//AAACAAEAAAAAAAAAAAACAAEAAAAAAAEAAAACAAIAAAD//wEAAAABAAIAAAD+/wEAAAAAAAIAAAD+/wAAAAAAAAEAAAD+////AAAAAAEAAAD//wAAAAABAAEAAAD/////AAABAAEAAAA=")
 tile_set = SubResource("TileSet_xvq2g")
-format = 2
-layer_0/tile_data = PackedInt32Array(-65538, 0, 0, -65537, 65536, 0, -131072, 65536, 0, -131071, 131072, 0, 131073, 131072, 2, 196606, 0, 2, 196607, 65536, 2, 131072, 65536, 2, 65537, 131072, 1, 1, 131072, 1, -65535, 131072, 1, 131070, 0, 1, 65534, 0, 1, -2, 0, 1, -1, 65536, 1, -65536, 65536, 1, 0, 65536, 1, 65536, 65536, 1, 131071, 65536, 1, 65535, 65536, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TileMap"]
 texture_filter = 1
 offset_left = -159.0
 offset_top = -185.0
-offset_right = 173.0
-offset_bottom = 275.0
+offset_right = 71.0
+offset_bottom = 168.0
 theme = SubResource("Theme_fuk6q")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "STATEMENT OF ENFORCEMENT
 
 "
-scroll_active = false
 language = "en"
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse"]
