@@ -1,4 +1,4 @@
-[gd_scene load_steps=167 format=3 uid="uid://cedtoq4cyhhok"]
+[gd_scene load_steps=168 format=3 uid="uid://cedtoq4cyhhok"]
 
 [ext_resource type="Texture2D" uid="uid://m0knuehinsli" path="res://Assets/ForegroundDemo1.png" id="1_hihse"]
 [ext_resource type="PackedScene" uid="uid://bstxgajkpgo0m" path="res://Objects/Character_Obj.tscn" id="1_id553"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://u5068dtq2aph" path="res://Assets/Buttons/ButtonBY-NC-SA.png" id="10_v34sf"]
 [ext_resource type="Texture2D" uid="uid://catyi73vldul3" path="res://Assets/Buttons/ButtonBY-ND.png" id="11_t0u0h"]
 [ext_resource type="Texture2D" uid="uid://1du2aq0d7yr" path="res://Assets/Buttons/ButtonBY-NC-ND.png" id="12_goyqc"]
+[ext_resource type="Texture2D" uid="uid://ds7gvwwrjcdga" path="res://Assets/Pantalla.png" id="13_k1y8o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_04mi8"]
 atlas = ExtResource("3_6xw7x")
@@ -1159,6 +1160,12 @@ sprite_frames = SubResource("SpriteFrames_pl7w2")
 
 [node name="CollisionShape2D" parent="Screen/LicTab/ButtonBY-NC-ND/Area2D" index="0"]
 shape = SubResource("RectangleShape2D_k2uyp")
+
+[node name="Tab" type="Sprite2D" parent="Screen/LicTab"]
+texture_filter = 1
+position = Vector2(-9.98, 54.825)
+scale = Vector2(2, 2)
+texture = ExtResource("13_k1y8o")
 
 [node name="Cursor" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
