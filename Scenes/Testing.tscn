@@ -1,4 +1,4 @@
-[gd_scene load_steps=175 format=3 uid="uid://cedtoq4cyhhok"]
+[gd_scene load_steps=167 format=3 uid="uid://cedtoq4cyhhok"]
 
 [ext_resource type="Texture2D" uid="uid://m0knuehinsli" path="res://Assets/ForegroundDemo1.png" id="1_hihse"]
 [ext_resource type="PackedScene" uid="uid://bstxgajkpgo0m" path="res://Objects/Character_Obj.tscn" id="1_id553"]
@@ -14,9 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://u5068dtq2aph" path="res://Assets/Buttons/ButtonBY-NC-SA.png" id="10_v34sf"]
 [ext_resource type="Texture2D" uid="uid://catyi73vldul3" path="res://Assets/Buttons/ButtonBY-ND.png" id="11_t0u0h"]
 [ext_resource type="Texture2D" uid="uid://1du2aq0d7yr" path="res://Assets/Buttons/ButtonBY-NC-ND.png" id="12_goyqc"]
-[ext_resource type="Texture2D" uid="uid://ds7gvwwrjcdga" path="res://Assets/Pantalla.png" id="13_k1y8o"]
-[ext_resource type="Texture2D" uid="uid://dunp2asu5cyuo" path="res://Assets/Buttons/ButtonNEXT.png" id="14_6f527"]
-[ext_resource type="Texture2D" uid="uid://brt8q2hso5m0s" path="res://Assets/TabInfraccion.png" id="15_a4iwt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_04mi8"]
 atlas = ExtResource("3_6xw7x")
@@ -1054,38 +1051,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j4apt"]
-atlas = ExtResource("14_6f527")
-region = Rect2(0, 0, 36, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_028uo"]
-atlas = ExtResource("14_6f527")
-region = Rect2(36, 0, 36, 17)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qslrp"]
-atlas = ExtResource("14_6f527")
-region = Rect2(72, 0, 36, 17)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_aktuu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j4apt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_028uo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qslrp")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5recu"]
-size = Vector2(36.3636, 17.0055)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_sl27t"]
 atlas = ExtResource("4_ijqfi")
 region = Rect2(0, 0, 16, 16)
@@ -1143,7 +1108,6 @@ position = Vector2(576, 324)
 position = Vector2(906, 335)
 
 [node name="LicTab" type="Node2D" parent="Screen"]
-visible = false
 position = Vector2(32.275, 20.405)
 scale = Vector2(1.21, 1.21)
 
@@ -1196,31 +1160,6 @@ sprite_frames = SubResource("SpriteFrames_pl7w2")
 [node name="CollisionShape2D" parent="Screen/LicTab/ButtonBY-NC-ND/Area2D" index="0"]
 shape = SubResource("RectangleShape2D_k2uyp")
 
-<<<<<<< HEAD
-=======
-[node name="Tab" type="Sprite2D" parent="Screen/LicTab"]
-texture_filter = 1
-position = Vector2(-9.875, 55.41)
-scale = Vector2(2.009, 2.009)
-texture = ExtResource("13_k1y8o")
-
-[node name="InfTab" type="Node2D" parent="Screen"]
-scale = Vector2(1.21, 1.21)
-
-[node name="ButtonZERO" parent="Screen/InfTab" instance=ExtResource("5_4w7j8")]
-position = Vector2(81.8182, 74.0303)
-sprite_frames = SubResource("SpriteFrames_aktuu")
-
-[node name="CollisionShape2D" parent="Screen/InfTab/ButtonZERO/Area2D" index="0"]
-shape = SubResource("RectangleShape2D_5recu")
-
-[node name="Inf" type="Sprite2D" parent="Screen/InfTab"]
-texture_filter = 1
-position = Vector2(11.82, -80.37)
-scale = Vector2(2.00931, 2.00931)
-texture = ExtResource("15_a4iwt")
-
->>>>>>> 4d9193721ee1e535acd1ac39058f8f426a8413a2
 [node name="Cursor" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(573, 324)
@@ -1235,4 +1174,3 @@ script = ExtResource("5_olf56")
 [editable path="Screen/LicTab/ButtonBY-NC-SA"]
 [editable path="Screen/LicTab/ButtonBY-ND"]
 [editable path="Screen/LicTab/ButtonBY-NC-ND"]
-[editable path="Screen/InfTab/ButtonZERO"]
