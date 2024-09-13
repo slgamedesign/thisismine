@@ -27,7 +27,7 @@ func _input(_event: InputEvent) -> void:
 	
 # Called when the node enters the scene tree for the first time.
 
-func _on_next(action: String, buttonName : String) -> void:
+func _on_next(action: String, tab_index : int) -> void:
 	global.sendInfo[info] = checked
 	print(info, ": ", global.sendInfo[info])
 

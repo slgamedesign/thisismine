@@ -3,7 +3,7 @@ extends AnimatedSprite2D
 @export var buttonName : String
 @export var tab_index : int
 
-signal was_clicked(action : String, buttonName : String)
+signal was_clicked(buttonName : String, tab_index : int)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.frame = 0
@@ -25,3 +25,4 @@ func _input(_event: InputEvent) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func clicked() -> void: #TODO Señal para pasar a la siguiente tab
 	was_clicked.emit(buttonName, tab_index)
+	
