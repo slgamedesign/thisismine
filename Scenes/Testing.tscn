@@ -1,4 +1,4 @@
-[gd_scene load_steps=192 format=3 uid="uid://cedtoq4cyhhok"]
+[gd_scene load_steps=206 format=3 uid="uid://cedtoq4cyhhok"]
 
 [ext_resource type="Texture2D" uid="uid://m0knuehinsli" path="res://Assets/ForegroundDemo1.png" id="1_hihse"]
 [ext_resource type="PackedScene" uid="uid://bstxgajkpgo0m" path="res://Objects/Character_Obj.tscn" id="1_id553"]
@@ -22,6 +22,10 @@
 [ext_resource type="PackedScene" uid="uid://bdp0fmvbjr2ny" path="res://Objects/ScreenCheckBox.tscn" id="18_6utxg"]
 [ext_resource type="Texture2D" uid="uid://1j5b3bbtcchq" path="res://Assets/InfTabContent.png" id="18_kv0kw"]
 [ext_resource type="Texture2D" uid="uid://dihd0v6f4hgb4" path="res://Assets/Buttons/CheckBox.png" id="19_wsu31"]
+[ext_resource type="Texture2D" uid="uid://chc6iamfckpfe" path="res://Assets/FinTab.png" id="21_7cse0"]
+[ext_resource type="Texture2D" uid="uid://bu701pj3wlhnq" path="res://Assets/NOTAPP-APP.png" id="22_gyvpo"]
+[ext_resource type="Texture2D" uid="uid://b6evynkyl3kf3" path="res://Assets/Buttons/ButtonNOTAPPROVED.png" id="23_bnww4"]
+[ext_resource type="Texture2D" uid="uid://dsruvylhhfsyu" path="res://Assets/Buttons/ButtonAPPROVED.png" id="24_1v7ie"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_04mi8"]
 atlas = ExtResource("3_6xw7x")
@@ -1165,6 +1169,70 @@ size = Vector2(9.091, 9.09091)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1sfwx"]
 size = Vector2(9.09113, 9.09091)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cswf"]
+atlas = ExtResource("23_bnww4")
+region = Rect2(0, 0, 53, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpk7j"]
+atlas = ExtResource("23_bnww4")
+region = Rect2(53, 0, 53, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe88k"]
+atlas = ExtResource("23_bnww4")
+region = Rect2(106, 0, 53, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r40vb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cswf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpk7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe88k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6rlyq"]
+size = Vector2(53, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4akl3"]
+atlas = ExtResource("24_1v7ie")
+region = Rect2(0, 0, 53, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1na8c"]
+atlas = ExtResource("24_1v7ie")
+region = Rect2(53, 0, 53, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44o4x"]
+atlas = ExtResource("24_1v7ie")
+region = Rect2(106, 0, 53, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vt638"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4akl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1na8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44o4x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0ql2"]
+size = Vector2(53, 53)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_sl27t"]
 atlas = ExtResource("4_ijqfi")
 region = Rect2(0, 0, 16, 16)
@@ -1187,7 +1255,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[node name="Game" type="Node2D"]
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 
@@ -1299,6 +1367,7 @@ scale = Vector2(2.009, 2.009)
 texture = ExtResource("13_k1y8o")
 
 [node name="InfTab" type="Node2D" parent="Screen"]
+visible = false
 scale = Vector2(1.21, 1.21)
 
 [node name="ButtonNEXT" parent="Screen/InfTab" instance=ExtResource("5_4w7j8")]
@@ -1374,8 +1443,38 @@ info = "nd"
 position = Vector2(-0.826538, 2.06612)
 shape = SubResource("RectangleShape2D_kti6j")
 
-[node name="Node2D" type="Node2D" parent="Screen"]
-position = Vector2(-906, -335)
+[node name="FinTab" type="Node2D" parent="Screen"]
+scale = Vector2(1.21, 1.21)
+
+[node name="Sprite2D" type="Sprite2D" parent="Screen/FinTab"]
+texture_filter = 1
+position = Vector2(11.8231, -81.393)
+scale = Vector2(1.99569, 2.009)
+texture = ExtResource("21_7cse0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Screen/FinTab"]
+texture_filter = 1
+position = Vector2(2.31427, 67.3167)
+scale = Vector2(2.009, 2.009)
+texture = ExtResource("22_gyvpo")
+
+[node name="ButtonNAPP" parent="Screen/FinTab" instance=ExtResource("5_4w7j8")]
+position = Vector2(-54.5455, 1.65289)
+scale = Vector2(1.65289, 1.65289)
+sprite_frames = SubResource("SpriteFrames_r40vb")
+buttonName = "false"
+
+[node name="CollisionShape2D" parent="Screen/FinTab/ButtonNAPP/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_6rlyq")
+
+[node name="ButtonAPP" parent="Screen/FinTab" instance=ExtResource("5_4w7j8")]
+position = Vector2(79.3388, 1.65289)
+scale = Vector2(1.65289, 1.65289)
+sprite_frames = SubResource("SpriteFrames_vt638")
+buttonName = "true"
+
+[node name="CollisionShape2D" parent="Screen/FinTab/ButtonAPP/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_f0ql2")
 
 [node name="Cursor" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -1397,6 +1496,8 @@ script = ExtResource("5_olf56")
 [connection signal="was_clicked" from="Screen/InfTab/ButtonNEXT" to="Screen/InfTab/Checkbox2" method="_on_next"]
 [connection signal="was_clicked" from="Screen/InfTab/ButtonNEXT" to="Screen/InfTab/Checkbox3" method="_on_next"]
 [connection signal="was_clicked" from="Screen/InfTab/ButtonBACK" to="Screen" method="_on_button_was_clicked"]
+[connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="Screen" method="_on_button_was_clicked"]
+[connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="Screen" method="_on_button_was_clicked"]
 
 [editable path="Screen/LicTab/ButtonZERO"]
 [editable path="Screen/LicTab/ButtonBY"]
@@ -1411,3 +1512,5 @@ script = ExtResource("5_olf56")
 [editable path="Screen/InfTab/Checkbox1"]
 [editable path="Screen/InfTab/Checkbox2"]
 [editable path="Screen/InfTab/Checkbox3"]
+[editable path="Screen/FinTab/ButtonNAPP"]
+[editable path="Screen/FinTab/ButtonAPP"]
