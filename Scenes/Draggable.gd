@@ -23,8 +23,12 @@ func _ready() -> void:
 	add_to_group("Draggable", true) # Añande el objeto al grupo Draggable para organización
 
 
-func _on_area_2d_mouse() -> void: # Llamada cuando el mouse SALE/ENTRA al area del documento
-	draggable = !draggable
+func _on_area_2d_mouse_entered() -> void: # Llamada cuando el mouse ENTRA al area del documento
+	draggable = false if global.isdragging else true
+
+
+func _on_area_2d_mouse_exited() -> void: # Llamada cuando el mouse SALE al area del documento
+	draggable = false
 
 
 func show_document() -> void:
@@ -36,6 +40,7 @@ func show_document() -> void:
 func move_document() -> void:
 	self.z_index = 4090 # Mueve el objeto para que se renderize arriba de cualquier otro
 	global_position = get_global_mouse_position() # Mueve el objeto arrastrado a la posición del mouse
+	global.isdragging = true # Se informa que se arrastra un objeto
 	# Limita el área de movimiento del objeto
 	global_position.y = clampf(global_position.y - offset.y, 382 + get_child(1, true).get_child(0).shape.extents.y / 2, 650 - get_child(1, true).get_child(0).shape.extents.y / 2)
 	global_position.x = clampf(global_position.x - offset.x, get_child(1, true).get_child(0).shape.extents.x / 2, 700 - get_child(1, true).get_child(0).shape.extents.x / 2)
@@ -45,9 +50,8 @@ func _input(_evt: InputEvent) -> void:
 	if Input.is_action_just_pressed("Click") and draggable:
 		offset = -Vector2(global_position - get_global_mouse_position())
 	
-	if Input.is_action_pressed("Click") and draggable: # Si el click está presionado
+	if Input.is_action_pressed("Click") and draggable and global.isdragging == false: # Si el click está presionado
 		move_document()
-		global.isdragging = true # Setea la variable global que algo está siendo arrastrado
 		
 	if Input.is_action_just_released("Click") and global.isdragging: # Si se está arrastrando algo y se suelta el mouse
 		global.isdragging = false # Se informa que ya no se arrastra nada
