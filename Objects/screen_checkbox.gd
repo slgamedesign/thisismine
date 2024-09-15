@@ -24,6 +24,8 @@ func _input(_event: InputEvent) -> void:
 
 func _on_next(_action: String, _tab_index : int) -> void:
 	global.sendInfo[info] = checked
+	checked = false
+	self.frame = 0
 	print(info, ": ", global.sendInfo[info])
 
 func clicked():

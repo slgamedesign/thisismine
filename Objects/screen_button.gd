@@ -15,9 +15,9 @@ func _on_area_2d_mouse() -> void:
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_pressed("Click") and !!self.frame:
+	if Input.is_action_pressed("Click") and self.frame:
 		self.frame = 3
-	if Input.is_action_just_released("Click") and !!self.frame:
+	if Input.is_action_just_released("Click") and self.frame:
 		self.frame = 1
 		clicked()
 

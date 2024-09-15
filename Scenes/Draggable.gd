@@ -50,7 +50,7 @@ func _input(_evt: InputEvent) -> void:
 	if Input.is_action_just_pressed("Click") and draggable:
 		offset = -Vector2(global_position - get_global_mouse_position())
 	
-	if Input.is_action_pressed("Click") and draggable and global.isdragging == false: # Si el click está presionado
+	if Input.is_action_pressed("Click") and draggable: # Si el click está presionado
 		move_document()
 		
 	if Input.is_action_just_released("Click") and global.isdragging: # Si se está arrastrando algo y se suelta el mouse
