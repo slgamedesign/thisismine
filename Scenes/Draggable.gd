@@ -6,7 +6,7 @@ var draggable: bool # variable estática para saber si se puede arrastrar o no
 var offset : Vector2
 
 const Docs = preload("res://Prompts/Documents.gd")
-var sourceArray = Docs.new().docs
+var sourceArray = Docs.new().docs.map(func (doc): return doc["text"])
 
 # Añade el objeto al grupo "Draggable" para organizar
 func _ready() -> void:

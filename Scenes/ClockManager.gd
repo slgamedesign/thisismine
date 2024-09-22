@@ -31,7 +31,6 @@ func _ready() -> void:
 		timer.one_shot = false  # Ensure the timer repeats
 		timer.connect("timeout", Callable(self, "_on_timer_timeout"))  # Connect to the timeout signal
 
-
 # Called when the timer times out (every second or set time).
 func _on_timer_timeout() -> void:
 	_update_minute_hand()
@@ -39,7 +38,6 @@ func _on_timer_timeout() -> void:
 	# Check if the game should end or reset
 	if time <= 0:
 		_reset_clock()  # Handle what happens when time hits 0
-
 
 # Function to update the minute hand's frame and check for hour updates
 func _update_minute_hand() -> void:
@@ -62,7 +60,6 @@ func _update_minute_hand() -> void:
 		# If the minute hand reaches the max frame count, reset it
 		if minuteHandle.frame >= minuteHandle.sprite_frames.get_frame_count(minuteHandle.animation):
 			minuteHandle.frame = 0
-
 
 # Function to update the hour hand's frame every 12 minutes
 func _update_hour_hand() -> void:

@@ -21,9 +21,9 @@ func _on_button_was_clicked(_buttonName : String, tab_index : int) -> void:
 #informa la licencencia a la variable global
 func send_license(buttonName : String, _tab_index : int) -> void:
 	global.sendInfo["license"] = buttonName
-	print("license: ", global.sendInfo["license"])
+
 
 #informa si fue aprovada a la variable global
 func is_approved(buttonName : String, _tab_index : int) -> void:
 	global.sendInfo["app"] = !!buttonName
-	print("app: ", global.sendInfo["app"])
+	global.user_responses.append(global.sendInfo)
