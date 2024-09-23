@@ -5,21 +5,24 @@ var draggable: bool # variable estática para saber si se puede arrastrar o no
 @export var textArea : RichTextLabel # Texto del Pop-up
 var offset : Vector2
 
-const statements = preload("res://Prompts/Documents.gd")
+var docs = preload("res://Prompts/Documents.gd").new()
 
-#Statements
-var statementTArray = statements.new().statements.map(func (doc): return doc["text"])
-var sueTArray = statements.new().sue.map(func (doc): return doc["text"])
+var sues = docs.sue
+var statements = docs.statements
 
-#Sueing
-var statementArray = statements.new().statements.map(func (doc): return doc["license"])
-var sueArray = statements.new().sue.map(func (doc): return doc["license"])
 
-#Infractions
-var attArray = statements.new().sue.map(func (doc): return doc["att"])
-var saArray = statements.new().sue.map(func (doc): return doc["sa"])
-var ncArray = statements.new().sue.map(func (doc): return doc["nc"])
-var ndArray = statements.new().sue.map(func (doc): return doc["nd"])
+# correct_responses / Infractions
+var infractions = docs.sue.map(
+	func (doc) -> Dictionary: return {
+		"license": doc["license"],
+		"att": doc["att"],
+		"sa": doc["sa"],
+		"nc": doc["nc"],
+		"nd": doc["nd"],
+		"app": true
+		}
+	)
+
 
 var randSt : int
 # Añade el objeto al grupo "Draggable" para organizar
@@ -47,13 +50,25 @@ func change_text_pop_up() -> void:
 	
 	var randSue = randi_range(0, 4)
 	
-	textArea.append_text(statementTArray[randSt] + statementArray[randSt] + "\n")
-	textArea.append_text(sueTArray[randSue] + sueArray[randSue])
-	if statementArray[randSt] == sueArray[randSue] or statementArray[randSt] == "all":
-		global.correct_responses.append({"license" : sueArray[randSue], "att" : attArray[randSue], "sa" : saArray[randSue], "nc" : ncArray[randSue], "nd" : ndArray[randSue], "app" : true})
+	textArea.append_text(statements[randSt]["text"] + statements[randSt]["license"] + "\n")
+	textArea.append_text(sues[randSue]["text"] + sues[randSue]["license"])
+	
+	
+	#se envian a las variable global 
+	#las respuestas correctas de la ronda jugada 
+	#para compararlas con las respuestas de jugador
+	if (statements[randSt]["license"] == sues[randSue]["license"] or 
+	statements[randSt]["license"] == "all"):
+		global.correct_responses.append(infractions[randSue])
 	else:
-		global.correct_responses.append({"license" : "", "att" : "", "sa" : "", "nc" : "", "nd" : "", "app" : false})
-		pass
+		global.correct_responses.append({
+			"license" : statements[randSt]["license"], 
+			"att" : false, 
+			"sa" : false, 
+			"nc" : false, 
+			"nd" : false, 
+			"app" : false})
+	
 	print(global.correct_responses)
 
 
