@@ -29,7 +29,7 @@ func _ready() -> void:
 		timer.start()  # Start the timer
 		timer.wait_time = 1  # Each second represents a minute in the game
 		timer.one_shot = false  # Ensure the timer repeats
-		timer.connect("timeout", Callable(self, "_on_timer_timeout"))  # Connect to the timeout signal
+
 
 # Called when the timer times out (every second or set time).
 func _on_timer_timeout() -> void:
