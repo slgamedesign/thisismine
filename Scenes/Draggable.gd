@@ -47,11 +47,11 @@ func change_text_pop_up() -> void:
 	# Añade el texto al Pop-up
 	if randi_range(0,100) < 25:
 		
-		randSt = randi_range(1, 6)
+		randSt = randi_range(1, statements.size())
 	else:
 		randSt = 0
 	
-	var randSue = randi_range(0, 4)
+	var randSue = randi_range(0, sues.size())
 	
 	textArea.append_text(statements[randSt]["text"] + statements[randSt]["license"] + "\n")
 	textArea.append_text(sues[randSue]["text"] + sues[randSue]["license"])
