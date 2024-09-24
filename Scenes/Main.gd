@@ -37,36 +37,16 @@ func validate_player_responses():
 
 
 func validate_checks() -> Dictionary:
-		var results : Dictionary = {"rounds" : [], "count" : 0}
+		var results : Dictionary = {"rounds" : [], "total_errors" : 0, "total_oks" : 0}
 		
-		var user_res : Array = global.user_responses.map(
-			func (res):
-				{
-					"license" : res["license"],
-					"att" : res["att"], 
-					"sa" : res["sa"], 
-					"nc" : res["nc"], 
-					"nd" : res["nd"],
-				}
-		)
+		var user_res : Array = global.user_responses
+		var ok_res : Array = global.correct_responses
 		
-		var ok_res : Array = global.correct_responses.map(
-			func (res):
-				{
-					"license" : res["license"],
-					"att" : res["att"], 
-					"sa" : res["sa"], 
-					"nc" : res["nc"], 
-					"nd" : res["nd"],
-				}
-		)
-		
-		var err_count : int = 0
-		var ok_count : int = 0
-		
-		for i in range(0, user_res.size()):
+		for i in range(0, user_res.size()-1):
+			var err_count : int = 0
+			var ok_count : int = 0
 			
-			results["rounds"][i] = {
+			results["rounds"].append({
 				"license" : null,
 				"att" : null,
 				"sa" : null,
@@ -74,47 +54,46 @@ func validate_checks() -> Dictionary:
 				"nd" : null,
 				"errors" : 0,
 				"oks" : 0,
-			} 
+			})
 			
 			if user_res[i]["license"] != ok_res[i]["license"]: 
 				err_count += 1 
 				results["rounds"][i]["license"] = true
 			else : 
-				results["license"][i] = false
+				results["rounds"][i]["license"] = false
 				ok_count += 1
 			
 			if user_res[i]["att"] != ok_res[i]["att"]:
 				err_count += 1 
 				results["rounds"][i]["att"] = true
 			else : 
-				results["att"][i] = false
+				results["rounds"][i]["att"] = false
 				ok_count += 1
 			
 			if user_res[i]["sa"] != ok_res[i]["sa"]:
 				err_count += 1 
 				results["rounds"][i]["sa"] = true
 			else : 
-				results["sa"][i] = false
+				results["rounds"][i]["sa"] = false
 				ok_count += 1
 			
 			if user_res[i]["nc"] != ok_res[i]["nc"]:
 				err_count += 1 
 				results["rounds"][i]["nc"] = true
 			else : 
-				results["nc"][i] = false
+				results["rounds"][i]["nc"] = false
 				ok_count += 1
 			
 			if user_res[i]["nd"] != ok_res[i]["nd"]:
 				err_count += 1 
 				results["rounds"][i]["nd"] = true
 			else : 
-				results["nd"][i] = false
+				results["rounds"][i]["nd"] = false
 				ok_count += 1
 			
-			results["errors"] = err_count
-			results["ok"] = ok_count
-			
-		results["count"] += err_count
-		results["count"] += err_count
+			results["rounds"][i]["errors"] = err_count
+			results["rounds"][i]["oks"] = ok_count
+			results["total_errors"] += err_count
+			results["total_oks"] += ok_count
 		
 		return results
