@@ -83,7 +83,7 @@ func _reset_clock() -> void:
 	# Reset the clock hands
 	if minuteHandle != null:
 		minuteHandle.frame = 0
-	if hourHandle != null and hourHandle.frame == 3:
+	if hourHandle != null and hourHandle.frame == 2:
 		hourHandle.frame = 0
 		timeIsUp = true
 		print("Time is up, resetting the clock or triggering end game!")
