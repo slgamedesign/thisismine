@@ -2025,6 +2025,7 @@ script = ExtResource("5_olf56")
 
 [connection signal="_new_char" from="." to="CanvasGroup/MASK/Personaje" method="_ready"]
 [connection signal="animation_finished" from="CanvasGroup/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeUp" from="CanvasGroup/Clock" to="." method="validate_player_responses"]
 [connection signal="frame_changed" from="CanvasGroup/Clock/Minutes" to="CanvasGroup/Clock" method="_on_minutes_frame_changed"]
 [connection signal="timeout" from="CanvasGroup/Clock/Timer" to="CanvasGroup/Clock" method="_on_timer_timeout"]
 [connection signal="was_clicked" from="Screen/LicTab/ButtonZERO" to="Screen" method="send_license"]
