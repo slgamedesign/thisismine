@@ -6,6 +6,7 @@ extends Node2D
 signal _new_char()
 
 func _ready() -> void:
+	global.tickSpeed = 0.25
 	anim.current_animation = anim.get_animation_list()[1]
 	pass
 
