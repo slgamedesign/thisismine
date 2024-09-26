@@ -1,8 +1,9 @@
-[gd_scene load_steps=349 format=3 uid="uid://cedtoq4cyhhok"]
+[gd_scene load_steps=350 format=3 uid="uid://cedtoq4cyhhok"]
 
 [ext_resource type="Texture2D" uid="uid://m0knuehinsli" path="res://Assets/ForegroundDemo1.png" id="1_hihse"]
 [ext_resource type="PackedScene" uid="uid://bstxgajkpgo0m" path="res://Objects/Character_Obj.tscn" id="1_id553"]
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_vy1sf"]
+[ext_resource type="AudioStream" uid="uid://vsxuwf0ylkvg" path="res://Audio/BackgroundNoise.wav" id="2_ddidr"]
 [ext_resource type="Texture2D" uid="uid://dj4mc5f5gydh" path="res://Assets/Fila.png" id="3_6xw7x"]
 [ext_resource type="PackedScene" uid="uid://cyo0o11vv6oyn" path="res://Objects/DraggableObject.tscn" id="3_faqed"]
 [ext_resource type="Texture2D" uid="uid://beqb6w31lom6t" path="res://Assets/Cursor.png" id="4_ijqfi"]
@@ -2260,6 +2261,11 @@ queue = NodePath("CanvasGroup/Fila")
 anim = NodePath("CanvasGroup/AnimationPlayer")
 fore = NodePath("CanvasGroup/Foreground")
 
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ddidr")
+autoplay = true
+playback_type = 1
+
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 
 [node name="Fila" type="AnimatedSprite2D" parent="CanvasGroup"]
@@ -2547,13 +2553,13 @@ script = ExtResource("5_olf56")
 [connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="." method="_on_sentence"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="." method="_game_over"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="Object" method="_on_app_or_napp"]
-[connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="Screen" method="is_approved"]
+[connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="." method="_on_sentence"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="." method="_game_over"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="Object" method="_on_app_or_napp"]
-[connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="Screen" method="is_approved"]
+[connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="Screen" method="_on_button_was_clicked"]
 
 [editable path="Screen/LicTab/ButtonZERO"]
 [editable path="Screen/LicTab/ButtonBY"]
