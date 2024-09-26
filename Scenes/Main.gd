@@ -2,6 +2,7 @@ extends Node2D
 
 @export var queue : AnimatedSprite2D
 @export var anim : AnimationPlayer
+@export var fore : AnimatedSprite2D
 
 signal _new_char()
 
@@ -42,8 +43,12 @@ func _game_over(_btn_name, _i):
 			global.correct_responses[global.user_responses.size()-1]["app"]
 		))
 
-		if 0 >= global.health:
-			print("\n\n\n\ngame_over\n\n")
+	if global.health <= 0:
+		print("\n\n\n\ngame_over\n\n")
+		fore.animation = "GameOver"
+		fore.play_backwards()
+	
+	
 
 
 func generate_results() -> Dictionary:
