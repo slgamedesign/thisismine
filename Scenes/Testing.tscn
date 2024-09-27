@@ -33,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://bu701pj3wlhnq" path="res://Assets/NOTAPP-APP.png" id="22_gyvpo"]
 [ext_resource type="Texture2D" uid="uid://b6evynkyl3kf3" path="res://Assets/Buttons/ButtonNOTAPPROVED.png" id="23_bnww4"]
 [ext_resource type="Texture2D" uid="uid://dsruvylhhfsyu" path="res://Assets/Buttons/ButtonAPPROVED.png" id="24_1v7ie"]
-[ext_resource type="PackedScene" uid="uid://cyrcwylk0la5" path="res://Objects/cursor.tscn" id="34_jeqdg"]
+[ext_resource type="PackedScene" path="res://Objects/cursor.tscn" id="34_jeqdg"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_iqosl"]
 stream_count = 2
@@ -211,6 +211,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.659754, 1.7411, 0.659754, 1.7411, 0.659754, 1.7411, 0.659754, 1.7411, 0.659754, 1.7411, 0.659754),
 "update": 0,
 "values": [Vector2(-649.5, -74), Vector2(-629.5, -95.205), Vector2(-609.5, -74), Vector2(-589.5, -95.205), Vector2(-569.5, -74), Vector2(-549.5, -95.205), Vector2(-529.5, -74), Vector2(-509, -95.205), Vector2(-488.5, -74), Vector2(-469.25, -95.205), Vector2(-455, -74)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Control/Object:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_r7c1u"]
@@ -2286,7 +2298,6 @@ texture_filter = 1
 position = Vector2(576, 324)
 scale = Vector2(2.4, 2.4)
 sprite_frames = SubResource("SpriteFrames_ave86")
-animation = &"GameOver"
 autoplay = "default"
 
 [node name="Clock" type="Node2D" parent="CanvasGroup" node_paths=PackedStringArray("minuteHandle", "hourHandle", "timer")]
@@ -2312,8 +2323,16 @@ sprite_frames = SubResource("SpriteFrames_52wcp")
 [node name="Timer" type="Timer" parent="CanvasGroup/Clock"]
 one_shot = true
 
-[node name="Object" parent="." instance=ExtResource("3_faqed")]
-position = Vector2(452, 454)
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 461.0
+offset_top = 77.0
+offset_right = 691.0
+offset_bottom = 357.0
+
+[node name="Object" parent="Control" instance=ExtResource("3_faqed")]
+position = Vector2(-144, 432)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
@@ -2514,20 +2533,20 @@ shape = SubResource("RectangleShape2D_f0ql2")
 [connection signal="timeUp" from="CanvasGroup/Clock" to="." method="_game_over"]
 [connection signal="frame_changed" from="CanvasGroup/Clock/Minutes" to="CanvasGroup/Clock" method="_on_minutes_frame_changed"]
 [connection signal="timeout" from="CanvasGroup/Clock/Timer" to="CanvasGroup/Clock" method="_on_timer_timeout"]
-[connection signal="was_clicked" from="Screen/LicTab/ButtonZERO" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/LicTab/ButtonZERO" to="Screen" method="send_license"]
-[connection signal="was_clicked" from="Screen/LicTab/ButtonBY" to="Screen" method="_on_button_was_clicked"]
+[connection signal="was_clicked" from="Screen/LicTab/ButtonZERO" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/LicTab/ButtonBY" to="Screen" method="send_license"]
-[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-SA" to="Screen" method="_on_button_was_clicked"]
+[connection signal="was_clicked" from="Screen/LicTab/ButtonBY" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/LicTab/ButtonBY-SA" to="Screen" method="send_license"]
-[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC" to="Screen" method="_on_button_was_clicked"]
+[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-SA" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC" to="Screen" method="send_license"]
-[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC-SA" to="Screen" method="_on_button_was_clicked"]
+[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC-SA" to="Screen" method="send_license"]
-[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-ND" to="Screen" method="_on_button_was_clicked"]
+[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC-SA" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/LicTab/ButtonBY-ND" to="Screen" method="send_license"]
-[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC-ND" to="Screen" method="_on_button_was_clicked"]
+[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-ND" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC-ND" to="Screen" method="send_license"]
+[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC-ND" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/InfTab/ButtonNEXT" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/InfTab/ButtonNEXT" to="Screen/InfTab/Checkbox0" method="_on_next"]
 [connection signal="was_clicked" from="Screen/InfTab/ButtonNEXT" to="Screen/InfTab/Checkbox1" method="_on_next"]
@@ -2535,13 +2554,13 @@ shape = SubResource("RectangleShape2D_f0ql2")
 [connection signal="was_clicked" from="Screen/InfTab/ButtonNEXT" to="Screen/InfTab/Checkbox3" method="_on_next"]
 [connection signal="was_clicked" from="Screen/InfTab/ButtonBACK" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="." method="_on_sentence"]
-[connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="Object" method="_on_app_or_napp"]
-[connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="Screen" method="_on_button_was_clicked"]
+[connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="Control/Object" method="_on_app_or_napp"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="Screen" method="is_approved"]
+[connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="." method="_on_sentence"]
-[connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="Object" method="_on_app_or_napp"]
-[connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="Screen" method="_on_button_was_clicked"]
+[connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="Control/Object" method="_on_app_or_napp"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="Screen" method="is_approved"]
+[connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="Screen" method="_on_button_was_clicked"]
 
 [editable path="Screen/LicTab/ButtonZERO"]
 [editable path="Screen/LicTab/ButtonBY"]

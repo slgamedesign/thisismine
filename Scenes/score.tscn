@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://uq4ls3bw7l5a" path="res://Prompts/joystix monospace.otf" id="4_r34w3"]
 [ext_resource type="AudioStream" uid="uid://dix3icmtg7rjx" path="res://Audio/MenuDrums.wav" id="5_uws8y"]
 [ext_resource type="AudioStream" uid="uid://ctljprg8rf6he" path="res://Audio/Engine.wav" id="6_techb"]
-[ext_resource type="PackedScene" uid="uid://cyrcwylk0la5" path="res://Objects/cursor.tscn" id="8_lmgy1"]
+[ext_resource type="PackedScene" path="res://Objects/cursor.tscn" id="8_lmgy1"]
 [ext_resource type="PackedScene" uid="uid://v3ekwsxt6ja2" path="res://Objects/ScreenButton.tscn" id="9_cj3wl"]
 [ext_resource type="Texture2D" uid="uid://dunp2asu5cyuo" path="res://Assets/Buttons/ButtonNEXT.png" id="10_lvrcg"]
 
@@ -553,7 +553,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_med2p")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -579,13 +579,14 @@ frame_progress = 0.990085
 position = Vector2(525, 128.84)
 tile_map_data = PackedByteArray("AAD+////AAAAAAAAAAD/////AAABAAAAAAAAAP//AAABAAAAAAABAP//AAABAAAAAAACAP//AAACAAAAAAACAAAAAAACAAEAAAACAAEAAAACAAEAAAACAAIAAAACAAEAAAACAAMAAAACAAEAAAACAAQAAAACAAIAAAABAAQAAAABAAIAAAAAAAQAAAABAAIAAAD//wQAAAABAAIAAAD+/wQAAAAAAAIAAAD+/wMAAAAAAAEAAAD+/wIAAAAAAAEAAAD+/wEAAAAAAAEAAAD+/wAAAAAAAAEAAAD//wAAAAABAAEAAAAAAAAAAAABAAEAAAABAAAAAAABAAEAAAABAAEAAAABAAEAAAABAAIAAAABAAEAAAABAAMAAAABAAEAAAAAAAMAAAABAAEAAAD//wMAAAABAAEAAAD//wIAAAABAAEAAAD//wEAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_0kws0")
+collision_enabled = false
 
 [node name="RichTextLabel" type="RichTextLabel" parent="TileMapLayer"]
 texture_filter = 1
 offset_left = -155.0
 offset_top = -46.0
 offset_right = 247.0
-offset_bottom = 440.0
+offset_bottom = 385.0
 theme = SubResource("Theme_d1o3r")
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 25
@@ -601,20 +602,22 @@ position = Vector2(-73, 477)
 stream = ExtResource("6_techb")
 volume_db = -10.0
 
-[node name="Cursor" parent="." instance=ExtResource("8_lmgy1")]
-position = Vector2(567, 323)
-
 [node name="ButtonZERO" parent="." instance=ExtResource("9_cj3wl")]
-modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
 position = Vector2(568, 552)
 scale = Vector2(4.38235, 4.38235)
 sprite_frames = SubResource("SpriteFrames_csr14")
 buttonName = "next"
 
+[node name="Area2D" parent="ButtonZERO" index="0"]
+priority = 6
+
 [node name="CollisionShape2D" parent="ButtonZERO/Area2D" index="0"]
 position = Vector2(0, -0.228188)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1fl3f")
+
+[node name="Cursor" parent="." instance=ExtResource("8_lmgy1")]
+position = Vector2(567, 323)
 
 [connection signal="animation_finished" from="Background" to="." method="_on_background_animation_finished"]
 [connection signal="was_clicked" from="ButtonZERO" to="." method="_on_next"]

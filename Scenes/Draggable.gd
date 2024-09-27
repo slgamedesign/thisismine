@@ -90,7 +90,9 @@ func show_document() -> void:
 
 
 func move_document() -> void:
+	
 	self.z_index = 4090 # Mueve el objeto para que se renderize arriba de cualquier otro
+	
 	global_position = get_global_mouse_position() # Mueve el objeto arrastrado a la posición del mouse
 	global.isdragging = true # Se informa que se arrastra un objeto
 	# Limita el área de movimiento del objeto

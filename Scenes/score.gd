@@ -6,10 +6,10 @@ extends Node2D
 var intro = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
+	intro = true
 	background.frame = 68
 	background.play_backwards("default")
-	if global.health == 0:
+	if global.lost:
 		lost()
 	else:
 		label.add_text(str(global.score) + " dimes into your pocket\nCases: "
@@ -32,7 +32,10 @@ func _process(delta: float) -> void:
 
 
 func _on_next(buttonName: String, tab_index: int) -> void:
+	if global.lost:
+		get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 	background.play("default")
+	engine.play()
 	pass # Replace with function body.
 
 

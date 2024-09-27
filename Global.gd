@@ -12,3 +12,7 @@ var tickSpeed = 0.1
 var health : int = 3
 
 var score = 15
+
+var lost = false
+
+var docAnim = true
