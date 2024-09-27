@@ -1,4 +1,4 @@
-[gd_scene load_steps=353 format=3 uid="uid://cedtoq4cyhhok"]
+[gd_scene load_steps=349 format=3 uid="uid://cedtoq4cyhhok"]
 
 [ext_resource type="Texture2D" uid="uid://m0knuehinsli" path="res://Assets/ForegroundDemo1.png" id="1_hihse"]
 [ext_resource type="PackedScene" uid="uid://bstxgajkpgo0m" path="res://Objects/Character_Obj.tscn" id="1_id553"]
@@ -8,12 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://dj4mc5f5gydh" path="res://Assets/Fila.png" id="3_6xw7x"]
 [ext_resource type="PackedScene" uid="uid://cyo0o11vv6oyn" path="res://Objects/DraggableObject.tscn" id="3_faqed"]
 [ext_resource type="AudioStream" uid="uid://btc6vre0h1g25" path="res://Audio/Loop.wav" id="4_5v4hy"]
-[ext_resource type="Texture2D" uid="uid://beqb6w31lom6t" path="res://Assets/Cursor.png" id="4_ijqfi"]
 [ext_resource type="Texture2D" uid="uid://c1k58my58on3r" path="res://Assets/Intro.png" id="4_yxckt"]
 [ext_resource type="Script" path="res://Scenes/ScreenManager.gd" id="5_2bwg0"]
 [ext_resource type="Texture2D" uid="uid://bx763m61qm1he" path="res://Assets/ClockBG.png" id="5_4rg7t"]
 [ext_resource type="PackedScene" uid="uid://v3ekwsxt6ja2" path="res://Objects/ScreenButton.tscn" id="5_4w7j8"]
-[ext_resource type="Script" path="res://Scenes/Cursor.gd" id="5_olf56"]
 [ext_resource type="Script" path="res://Scenes/ClockManager.gd" id="5_thxqi"]
 [ext_resource type="Texture2D" uid="uid://cuogqgje7vbeb" path="res://Assets/ClockMIN.png" id="6_g1dtx"]
 [ext_resource type="Texture2D" uid="uid://tog4olmkbv47" path="res://Assets/Buttons/ButtonZERO.png" id="6_tlwy6"]
@@ -35,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://bu701pj3wlhnq" path="res://Assets/NOTAPP-APP.png" id="22_gyvpo"]
 [ext_resource type="Texture2D" uid="uid://b6evynkyl3kf3" path="res://Assets/Buttons/ButtonNOTAPPROVED.png" id="23_bnww4"]
 [ext_resource type="Texture2D" uid="uid://dsruvylhhfsyu" path="res://Assets/Buttons/ButtonAPPROVED.png" id="24_1v7ie"]
+[ext_resource type="PackedScene" uid="uid://cyrcwylk0la5" path="res://Objects/cursor.tscn" id="34_jeqdg"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_iqosl"]
 stream_count = 2
@@ -2240,28 +2239,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f0ql2"]
 size = Vector2(53, 53)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sl27t"]
-atlas = ExtResource("4_ijqfi")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ik7d"]
-atlas = ExtResource("4_ijqfi")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_q773g"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sl27t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4ik7d")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Game" type="Node2D" node_paths=PackedStringArray("queue", "anim", "fore")]
 script = ExtResource("1_vy1sf")
 queue = NodePath("CanvasGroup/Fila")
@@ -2530,33 +2507,27 @@ buttonName = "approved"
 [node name="CollisionShape2D" parent="Screen/FinTab/ButtonAPP/Area2D" index="0"]
 shape = SubResource("RectangleShape2D_f0ql2")
 
-[node name="Cursor" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-position = Vector2(573, 324)
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_q773g")
-script = ExtResource("5_olf56")
+[node name="Cursor" parent="." instance=ExtResource("34_jeqdg")]
 
 [connection signal="_new_char" from="." to="CanvasGroup/MASK/Personaje" method="_ready"]
 [connection signal="animation_finished" from="CanvasGroup/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="timeUp" from="CanvasGroup/Clock" to="." method="validate_player_responses"]
 [connection signal="timeUp" from="CanvasGroup/Clock" to="." method="_game_over"]
 [connection signal="frame_changed" from="CanvasGroup/Clock/Minutes" to="CanvasGroup/Clock" method="_on_minutes_frame_changed"]
 [connection signal="timeout" from="CanvasGroup/Clock/Timer" to="CanvasGroup/Clock" method="_on_timer_timeout"]
-[connection signal="was_clicked" from="Screen/LicTab/ButtonZERO" to="Screen" method="send_license"]
 [connection signal="was_clicked" from="Screen/LicTab/ButtonZERO" to="Screen" method="_on_button_was_clicked"]
-[connection signal="was_clicked" from="Screen/LicTab/ButtonBY" to="Screen" method="send_license"]
+[connection signal="was_clicked" from="Screen/LicTab/ButtonZERO" to="Screen" method="send_license"]
 [connection signal="was_clicked" from="Screen/LicTab/ButtonBY" to="Screen" method="_on_button_was_clicked"]
-[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-SA" to="Screen" method="send_license"]
+[connection signal="was_clicked" from="Screen/LicTab/ButtonBY" to="Screen" method="send_license"]
 [connection signal="was_clicked" from="Screen/LicTab/ButtonBY-SA" to="Screen" method="_on_button_was_clicked"]
-[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC" to="Screen" method="send_license"]
+[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-SA" to="Screen" method="send_license"]
 [connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC" to="Screen" method="_on_button_was_clicked"]
-[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC-SA" to="Screen" method="send_license"]
+[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC" to="Screen" method="send_license"]
 [connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC-SA" to="Screen" method="_on_button_was_clicked"]
-[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-ND" to="Screen" method="send_license"]
+[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC-SA" to="Screen" method="send_license"]
 [connection signal="was_clicked" from="Screen/LicTab/ButtonBY-ND" to="Screen" method="_on_button_was_clicked"]
-[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC-ND" to="Screen" method="send_license"]
+[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-ND" to="Screen" method="send_license"]
 [connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC-ND" to="Screen" method="_on_button_was_clicked"]
+[connection signal="was_clicked" from="Screen/LicTab/ButtonBY-NC-ND" to="Screen" method="send_license"]
 [connection signal="was_clicked" from="Screen/InfTab/ButtonNEXT" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/InfTab/ButtonNEXT" to="Screen/InfTab/Checkbox0" method="_on_next"]
 [connection signal="was_clicked" from="Screen/InfTab/ButtonNEXT" to="Screen/InfTab/Checkbox1" method="_on_next"]
@@ -2564,12 +2535,10 @@ script = ExtResource("5_olf56")
 [connection signal="was_clicked" from="Screen/InfTab/ButtonNEXT" to="Screen/InfTab/Checkbox3" method="_on_next"]
 [connection signal="was_clicked" from="Screen/InfTab/ButtonBACK" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="." method="_on_sentence"]
-[connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="." method="_game_over"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="Object" method="_on_app_or_napp"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonNAPP" to="Screen" method="is_approved"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="." method="_on_sentence"]
-[connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="." method="_game_over"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="Object" method="_on_app_or_napp"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="Screen" method="_on_button_was_clicked"]
 [connection signal="was_clicked" from="Screen/FinTab/ButtonAPP" to="Screen" method="is_approved"]

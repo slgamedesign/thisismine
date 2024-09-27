@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyrcwylk0la5"]
+
+[ext_resource type="Texture2D" uid="uid://beqb6w31lom6t" path="res://Assets/Cursor.png" id="1_i6xv4"]
+[ext_resource type="Script" path="res://Scenes/Cursor.gd" id="2_p3s3p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl27t"]
+atlas = ExtResource("1_i6xv4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ik7d"]
+atlas = ExtResource("1_i6xv4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q773g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl27t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ik7d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Cursor" type="AnimatedSprite2D"]
+texture_filter = 1
+position = Vector2(573, 324)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_q773g")
+script = ExtResource("2_p3s3p")

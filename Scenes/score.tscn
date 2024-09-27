@@ -1,11 +1,15 @@
-[gd_scene load_steps=80 format=4 uid="uid://df6rqo1l6o4gp"]
+[gd_scene load_steps=90 format=4 uid="uid://df6rqo1l6o4gp"]
 
 [ext_resource type="Script" path="res://Scenes/score.gd" id="1_bckvt"]
 [ext_resource type="Texture2D" uid="uid://d2gdkg2o6a3n" path="res://Assets/ReadingDocumentAtlas.png" id="2_h2rs1"]
 [ext_resource type="Texture2D" uid="uid://c1k58my58on3r" path="res://Assets/Intro.png" id="3_0g6w6"]
 [ext_resource type="AudioStream" uid="uid://vsxuwf0ylkvg" path="res://Audio/BackgroundNoise.wav" id="4_opa1h"]
+[ext_resource type="FontFile" uid="uid://uq4ls3bw7l5a" path="res://Prompts/joystix monospace.otf" id="4_r34w3"]
 [ext_resource type="AudioStream" uid="uid://dix3icmtg7rjx" path="res://Audio/MenuDrums.wav" id="5_uws8y"]
 [ext_resource type="AudioStream" uid="uid://ctljprg8rf6he" path="res://Audio/Engine.wav" id="6_techb"]
+[ext_resource type="PackedScene" uid="uid://cyrcwylk0la5" path="res://Objects/cursor.tscn" id="8_lmgy1"]
+[ext_resource type="PackedScene" uid="uid://v3ekwsxt6ja2" path="res://Objects/ScreenButton.tscn" id="9_cj3wl"]
+[ext_resource type="Texture2D" uid="uid://dunp2asu5cyuo" path="res://Assets/Buttons/ButtonNEXT.png" id="10_lvrcg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ofdg"]
 atlas = ExtResource("3_0g6w6")
@@ -515,6 +519,9 @@ texture_region_size = Vector2i(96, 96)
 tile_size = Vector2i(96, 96)
 sources/0 = SubResource("TileSetAtlasSource_elnbc")
 
+[sub_resource type="Theme" id="Theme_d1o3r"]
+default_font = ExtResource("4_r34w3")
+
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_8rw7g"]
 stream_count = 2
 stream_0/stream = ExtResource("4_opa1h")
@@ -522,10 +529,43 @@ stream_0/volume = 0.0
 stream_1/stream = ExtResource("5_uws8y")
 stream_1/volume = 0.0
 
-[node name="Score" type="Node2D" node_paths=PackedStringArray("background", "engine")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvgnw"]
+atlas = ExtResource("10_lvrcg")
+region = Rect2(0, 0, 36, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3sgjt"]
+atlas = ExtResource("10_lvrcg")
+region = Rect2(36, 0, 36, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_med2p"]
+atlas = ExtResource("10_lvrcg")
+region = Rect2(72, 0, 36, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_csr14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvgnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3sgjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_med2p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fl3f"]
+size = Vector2(35.1409, 16.4296)
+
+[node name="Score" type="Node2D" node_paths=PackedStringArray("background", "engine", "label")]
 script = ExtResource("1_bckvt")
 background = NodePath("Background")
 engine = NodePath("Engine")
+label = NodePath("TileMapLayer/RichTextLabel")
 
 [node name="Background" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -540,10 +580,43 @@ position = Vector2(525, 128.84)
 tile_map_data = PackedByteArray("AAD+////AAAAAAAAAAD/////AAABAAAAAAAAAP//AAABAAAAAAABAP//AAABAAAAAAACAP//AAACAAAAAAACAAAAAAACAAEAAAACAAEAAAACAAEAAAACAAIAAAACAAEAAAACAAMAAAACAAEAAAACAAQAAAACAAIAAAABAAQAAAABAAIAAAAAAAQAAAABAAIAAAD//wQAAAABAAIAAAD+/wQAAAAAAAIAAAD+/wMAAAAAAAEAAAD+/wIAAAAAAAEAAAD+/wEAAAAAAAEAAAD+/wAAAAAAAAEAAAD//wAAAAABAAEAAAAAAAAAAAABAAEAAAABAAAAAAABAAEAAAABAAEAAAABAAEAAAABAAIAAAABAAEAAAABAAMAAAABAAEAAAAAAAMAAAABAAEAAAD//wMAAAABAAEAAAD//wIAAAABAAEAAAD//wEAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_0kws0")
 
+[node name="RichTextLabel" type="RichTextLabel" parent="TileMapLayer"]
+texture_filter = 1
+offset_left = -155.0
+offset_top = -46.0
+offset_right = 247.0
+offset_bottom = 440.0
+theme = SubResource("Theme_d1o3r")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 25
+text = "DAY SUMMARY:"
+
 [node name="NoiseDrums" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-38, 480)
 stream = SubResource("AudioStreamSynchronized_8rw7g")
 autoplay = true
 
 [node name="Engine" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-73, 477)
 stream = ExtResource("6_techb")
 volume_db = -10.0
+
+[node name="Cursor" parent="." instance=ExtResource("8_lmgy1")]
+position = Vector2(567, 323)
+
+[node name="ButtonZERO" parent="." instance=ExtResource("9_cj3wl")]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(568, 552)
+scale = Vector2(4.38235, 4.38235)
+sprite_frames = SubResource("SpriteFrames_csr14")
+buttonName = "next"
+
+[node name="CollisionShape2D" parent="ButtonZERO/Area2D" index="0"]
+position = Vector2(0, -0.228188)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_1fl3f")
+
+[connection signal="animation_finished" from="Background" to="." method="_on_background_animation_finished"]
+[connection signal="was_clicked" from="ButtonZERO" to="." method="_on_next"]
+
+[editable path="ButtonZERO"]
