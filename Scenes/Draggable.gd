@@ -53,8 +53,8 @@ func change_text_pop_up() -> void:
 	
 	var randSue = randi_range(0, sues.size()-1)
 	
-	textArea.append_text(statements[randSt]["text"] + statements[randSt]["license"] + "\n")
-	textArea.append_text(sues[randSue]["text"] + sues[randSue]["license"])
+	textArea.append_text(statements[randSt]["text"] + "\n")
+	textArea.append_text(sues[randSue]["text"])
 	
 	
 	#se envian a las variable global 

@@ -31,7 +31,7 @@ func _ready() -> void:
 
 
 # PARA DEBUG (ALEATORIZA TODO NUEVAMENTE)
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		_ready()
-	pass
+#func _input(_event: InputEvent) -> void:
+	#if Input.is_action_just_pressed("ui_accept"):
+		#_ready()
+	#pass
