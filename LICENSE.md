@@ -2,7 +2,7 @@
 
 ## Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
 
-**This Is Mine** © 2026 — All creative content is licensed under the
+**That's Mine!** © 2026 — All creative content is licensed under the
 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ---
@@ -50,4 +50,4 @@ The full legal text of the CC BY-NC-SA 4.0 license is available at:
 
 ---
 
-*This Is Mine* is provided as-is, without warranty of any kind, express or implied.
+*That's Mine!* is provided as-is, without warranty of any kind, express or implied.
