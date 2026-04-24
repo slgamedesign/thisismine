@@ -1,7 +1,4 @@
 <div align="center">
-  <h1>⚖️ That's Mine! (License Game)</h1>
-  
-<div align="center">
   <img src="assets/thatsmineintro.png" width="500">
   <h1>⚖️ That's Mine! (License Game)</h1>
 </div>
